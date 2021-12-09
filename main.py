@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from flask import request
 
 app = Flask(
 	__name__,
@@ -14,6 +15,11 @@ def base_page():
 		'base.html',
 		server_status=server_status
 	)
+
+@app.route('/status', methods = ['GET', 'POST'])
+def status():
+	if request.method == 'POST':
+		print("test")
 
 if __name__ == "__main__":
 	app.run(
